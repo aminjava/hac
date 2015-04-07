@@ -3,6 +3,8 @@ import java.io.IOException;
 
 
 public class FileReSize extends BaseRecursion {
+	
+	public static int resizeValue = 1550;
 
 	public FileReSize(String loc) {
 		super(loc);
@@ -24,7 +26,7 @@ public class FileReSize extends BaseRecursion {
 	@Override
 	public void executeFileTask(File fl) {
 		String parent = fl.getParent();
-		String dirName = parent.substring(parent.lastIndexOf("\\")+1,parent.length());
+		String dirName = parent.substring(parent.lastIndexOf(File.separator)+1,parent.length());
 		String _destDir = destdir+File.separator+dirName;
 		if(!new File(_destDir).exists()){
 			new File(_destDir).mkdirs();
@@ -35,13 +37,13 @@ public class FileReSize extends BaseRecursion {
 	
 		//System.out.print("resizing :"+_currfl);
 		try {
-			ImageResizer.createResizedCopy(_currfl, 1550, _destFile);
-			System.out.println("FileName :"+_currfl);
+			ImageResizer.createResizedCopy(_currfl, resizeValue, _destFile);
+		//	System.out.println("FileName :"+_currfl);
 		} catch (Exception e) {
 	
 			e.printStackTrace();
 		}
-		System.out.println(".... Done");
+	//	System.out.println(".... Done");
 
 	}
 

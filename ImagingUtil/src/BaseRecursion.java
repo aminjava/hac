@@ -43,9 +43,7 @@ public abstract class BaseRecursion {
 		public final void startDigging(File fl)
 		{
 			if(fl.isDirectory())
-			{
-				System.out.println("yes it is go on..");
-						
+			{			
 				File[] lfs =  fl.listFiles();
 				
 				for (int i = 0; i < lfs.length; i++) {
@@ -53,13 +51,11 @@ public abstract class BaseRecursion {
 					
 					if(fln.isDirectory())
 					{
-						System.out.println("Dir Name "+fln.getName());
 						executeDirTask(fln);
 						startDigging(fln);
 					}
 					else
 					{
-						System.out.println("Else "+fln.getName());
 						String name = fln.getName();
 						executeFileTask(fln);						
 						

@@ -15,6 +15,8 @@ import com.thebuzzmedia.imgscalr.Scalr;
 public class ImageResizer {
 	
 	static ArrayList imageExtentsions = new ArrayList();
+	public static int nonImgCount = 0;
+	public static int imgCount = 0;
 	
 	static{
 		imageExtentsions.add("jpg");
@@ -31,6 +33,7 @@ public class ImageResizer {
 			long startTime = System.nanoTime();
 			File srcFl = new File(insrcFile);
 			if(isImage(srcFl)){
+				String ext = FilenameUtils.getExtension(insrcFile);
 			BufferedImage srcImage = ImageIO.read(srcFl);
 			// Scale the image using the imgscalr library
 			BufferedImage scaledImage = Scalr.resize(srcImage, pixel);
@@ -38,13 +41,14 @@ public class ImageResizer {
 			File outFile = new File(_outFile);
 			
 		//	ImageIO.write(RenderedImage im,String formatName, File output);
-			ImageIO.write(scaledImage,"jpg", outFile);
+			ImageIO.write(scaledImage,ext, outFile);
 			long endTime = System.nanoTime();
 			long diff = endTime - startTime;
-			System.out.print("Resize of"+ srcFl.getName()+" completed in : "+TimeUnit.NANOSECONDS.toSeconds(diff) +"  Secs" );
+			System.out.println("Resize of"+ srcFl.getName()+" completed in : "+TimeUnit.NANOSECONDS.toSeconds(diff) +"  Secs" );
+			imgCount++;
 			}
 			else {
-				System.out.print("Not an Image ignoring....");
+				nonImgCount++;
 			}
 		}
 
