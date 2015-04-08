@@ -8,6 +8,7 @@ public abstract class BaseRecursion {
 	//	String rootDoot = "C:/root/testdir";
 		private File fl;
 		String destdir = "";
+		public static int dirCount = 0;
 		
 		public BaseRecursion()
 		{
@@ -51,6 +52,7 @@ public abstract class BaseRecursion {
 					
 					if(fln.isDirectory())
 					{
+						dirCount++;
 						executeDirTask(fln);
 						startDigging(fln);
 					}

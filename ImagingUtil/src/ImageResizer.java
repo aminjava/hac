@@ -44,7 +44,7 @@ public class ImageResizer {
 			ImageIO.write(scaledImage,ext, outFile);
 			long endTime = System.nanoTime();
 			long diff = endTime - startTime;
-			System.out.println("Resize of"+ srcFl.getName()+" completed in : "+TimeUnit.NANOSECONDS.toSeconds(diff) +"  Secs" );
+			System.out.println("Resize of"+ srcFl.getName()+" completed in : "+TimeUnit.NANOSECONDS.toMillis(diff) +"  Mills" );
 			imgCount++;
 			}
 			else {
